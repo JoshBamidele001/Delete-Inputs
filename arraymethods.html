@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            line-height: 20px;
+            text-align: center;
+        }
+
+        #div1{
+            width: 400px;
+            height: 700px;
+            margin: 100px auto;
+            border: 1px solid black;
+        }
+
+        input{
+            padding: 10px 15px;
+            margin: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+
+   
+     <div id="div1">
+        <h1>Delete Inputs</h1>
+        <span>Kindly type five names</span>
+        <input type="text" id="Input2">
+        <button onclick="push()">Add</button>
+        <div id="dispNewNames"></div>
+     </div>
+   
+
+
+</body>
+<script>
+
+
+    let newnames = []
+
+    function displayVal(){
+        document.getElementById("dispNewNames").innerHTML = ""
+        for (let i = 0; i < newnames.length; i++){
+            document.getElementById("dispNewNames").innerHTML += `<h1> ${newnames[i]} <button onclick = "delElement(${i})">Del</button> </h1>`
+        } 
+    }
+
+    function push(){
+        let Input2 = document.getElementById("Input2").value;
+        newnames.push(Input2);
+        console.log(newnames)
+        displayVal()
+    }
+
+    function delElement(num){
+        console.log(num)
+        newnames.splice(num, 1) 
+         console.log(newnames) 
+        if (newnames != ""){
+            displayVal()
+        } else {
+            document.getElementById("dispNewNames").innerHTML = "No user found"
+        }
+    }
+
+ 
+
+</script>
+</html>
